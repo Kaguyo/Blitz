@@ -1,3 +1,0 @@
-# Ignorar alterações em arquivos dentro do diretório src/ durante merges
-src/** merge=ours
-tsconfig.json merge=ours

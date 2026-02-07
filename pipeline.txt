@@ -1,4 +1,0 @@
-commitMessage: subindo bomba
-sourceBranch: refactor-character-animation
-destinationBranch: master
-body: testing pr script
