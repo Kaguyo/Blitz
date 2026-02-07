@@ -2,6 +2,7 @@ import { SeeleAnimation } from "../animations/seeleAnimation.js";
 import { GameProperties } from "../../options/gameProperties.js";
 import { Attributes } from "../properties/attributes.js";
 import { Player } from "../../players/player.js";
+import { LifeBarManager } from "../../hud/lifeBarManager.js";
 
 export class SeeleMoveset {
     constructor(){
@@ -26,6 +27,9 @@ export class SeeleMoveset {
     
     Ultimate(player: Player){
         if (player.activeCharacter.attribute.energy >= player.activeCharacter.attribute.ultCost && GameProperties.allowUltimate){
+            let percentage = Math.max((((player.activeCharacter.attribute.hp / player.activeCharacter.attribute.hpBuild) - 0.6) * 100), 0).toString() + "%";
+            LifeBarManager.setHealthBar(percentage);
+            player.activeCharacter.attribute.hp -= (player.activeCharacter.attribute.hpBuild / 5) * 3;
             player.activeCharacter.animationSet.setAnimation(6);
             player.activeCharacter.attribute.energy = GameProperties.handleEnergy(
                 player.activeCharacter.attribute.energy, -player.activeCharacter.attribute.ultCost
@@ -35,7 +39,7 @@ export class SeeleMoveset {
             GameProperties.allowE = false;
             GameProperties.allowMovement = false;
             
-            let percentage;
+            
             if (player.activeCharacter.attribute.energy <= player.activeCharacter.attribute.energyMax){
                 percentage = (100 / (player.activeCharacter.attribute.energyMax / player.activeCharacter.attribute.energy)).toFixed(0).toString() + "%";
             } else {
