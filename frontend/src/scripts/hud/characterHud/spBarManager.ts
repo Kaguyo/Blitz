@@ -1,4 +1,4 @@
-import { Character } from "../characters/character.js"
+import { Character } from "../../characters/character.js"
 
 const energyBar1: HTMLElement = document.getElementById('energyBar1')!;
 const energyBar2: HTMLElement = document.getElementById('energyBar2')!;

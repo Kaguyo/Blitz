@@ -1,4 +1,4 @@
-import { ASSETS_BASE } from "../../config/paths";
+import { ASSETS_BASE } from "../../../config/paths";
 const CardIcon1 : HTMLImageElement = new Image();
 CardIcon1.src = ASSETS_BASE + "hud/characterContainer/cards/CardIcon.png"
 

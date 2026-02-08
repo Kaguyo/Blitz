@@ -1,4 +1,4 @@
-import { ASSETS_BASE } from "../../config/paths";
+import { ASSETS_BASE } from "../../../config/paths";
 
 const SeeleIcon1: HTMLImageElement = new Image();
 SeeleIcon1.src = ASSETS_BASE + "hud/characterContainer/characterIcons/SeeleIcon1.png";

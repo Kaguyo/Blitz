@@ -1,4 +1,4 @@
-import { ASSETS_BASE } from "../../config/paths";
+import { ASSETS_BASE } from "../../../config/paths";
 
 const standardLevel0: HTMLImageElement = new Image();
 standardLevel0.src = ASSETS_BASE + "hud/characterContainer/customText/characterLevels/standard_lvl_0.png";

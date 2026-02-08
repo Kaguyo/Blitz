@@ -2,7 +2,7 @@ import { SeeleAnimation } from "../animations/seeleAnimation.js";
 import { GameProperties } from "../../options/gameProperties.js";
 import { Attributes } from "../properties/attributes.js";
 import { Player } from "../../players/player.js";
-import { LifeBarManager } from "../../hud/lifeBarManager.js";
+import { LifeBarManager } from "../../hud/characterHud/lifeBarManager.js";
 
 export class SeeleMoveset {
     constructor(){

@@ -1,8 +1,8 @@
-import { CharacterCard } from "./characterCard.js";
-import { CharacterIcons } from "./characterIcon.js";
-import { CharacterLevel } from "./characterLevel.js";
-import { LifeBarManager } from "./lifeBarManager.js";
-import { SpBarManager } from "./spBarManager.js";
+import { CharacterCard } from "./characterHud/characterCard.js";
+import { CharacterIcons } from "./characterHud/characterIcon.js";
+import { CharacterLevel } from "./characterHud/characterLevel.js";
+import { LifeBarManager } from "./characterHud/lifeBarManager.js";
+import { SpBarManager } from "./characterHud/spBarManager.js";
 import { Player } from "../players/player.js";
 
 export class Hud {

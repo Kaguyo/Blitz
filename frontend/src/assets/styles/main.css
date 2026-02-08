@@ -1,24 +1,21 @@
-html {
-    margin: 0 auto;
-    user-select: none;
-}
-
-body {
-    margin: 0 auto;
+html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    user-select: none;
     background-color: rgb(27, 27, 27);
 }
 
 #foremostContainer {
-    width: 100%;
+    width: 100%;   /* ← viewport width */
+    height: 100%;  /* ← viewport height */
     margin: 0;
-    height: 100%;
 }
 
 #canvas1 {
     position: absolute;
-    /* border: 2px solid rgb(255, 0, 0); */
     width: 100%;
     height: 100%;
     transform: translate(-50%, -50%);
@@ -29,7 +26,6 @@ body {
 
 #canvasBackground {
     position: absolute;
-    /* border: 2px solid rgb(255, 0, 0); */
     width: 100%;
     height: 100%;
     transform: translate(-50%, -50%);
@@ -49,16 +45,17 @@ body {
 }
 
 #innerContainer {
-    width: 36.3%;
-    height: 2.6%;
+    position: absolute;
+    width: 25.15vw;
+    height: auto;  /* ← Deixa o conteúdo definir a altura */
+    top: 4.2vh;
+    left: 11.3vw;
 }
 
 #healthBarContainer {
     position: relative;
-    margin-top: 6.1%;
-    width: 69.3%;
-    height: 50%;
-    margin-left: 31%;
+    width: 100%;
+    height: 1.5vh;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 1.5% 100%);
 }
 
@@ -110,7 +107,7 @@ body {
 #healthBarBloodContainer {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 109%;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 1.2% 100%);
 }
 
@@ -124,10 +121,11 @@ body {
 
 #energyBarContainer {
     position: relative;
-    margin-top: 2.6%;
-    width: 67.6%;
-    margin-left: 32.6%;
-    height: 24%;
+    margin-top: 1.61vh;
+    left: 0.55vw;
+    width: 97.8%;
+
+    height: 0.8vh;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 1% 100%);
 }
 

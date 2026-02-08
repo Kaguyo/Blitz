@@ -1,4 +1,4 @@
-import { SpBarManager } from "../hud/spBarManager.js"
+import { SpBarManager } from "../hud/characterHud/spBarManager.js"
 import { Hud } from "../hud/hud.js"
 
 export class GameProperties {
