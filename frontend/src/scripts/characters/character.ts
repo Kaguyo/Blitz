@@ -11,14 +11,17 @@ import { CartethyiaAnimation } from "./animations/cartethyiaAnimation.js";
 import { KeqingAnimation } from "./animations/keqingAnimation.js";
 import { GutsAnimation } from "./animations/gutsAnimation.js";
 
+
 export class Character {
     // public fields region
     attribute: Attributes;
     moveset: any;
     animationSet: any;
     frame: HTMLImageElement;
+    name: string;
 
     constructor(id: number, level: number){
+        this.name = this.#getNameById(id);
         this.attribute = new Attributes(id, level);
         this.frame = new Image();
         this.moveset = this.#getMoveset(id.toString());
@@ -32,7 +35,7 @@ export class Character {
 
 
     // private methods region
-    #getAnimationSet(id : string){
+    #getAnimationSet(id : string) {
         const animationMap : Record<string, any> = {
             '1' : new SeeleAnimation(),
             '2' : new KeqingAnimation(),
@@ -51,5 +54,16 @@ export class Character {
         }
 
         return movesetMap[id];
+    }
+
+    #getNameById(id: number): string {
+        const nameMap: Record<number, string> = {
+            1 : "Seele",
+            2 : "Keqing",
+            3 : "Cartethyia",
+            4 : "Guts"
+        }
+
+        return nameMap[id];
     }
 }

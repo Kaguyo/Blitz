@@ -45,15 +45,17 @@ export class Player {
     
     handleInput(): void {
         const switchKeys = ['1', '2', '3'];
-        const moveKeys = ["a", "d", "w", "s"];
+        const movementKeys = ["a", "d", "w", "s"];
         const attackKeys = ['j', 'k', 'q', 'i'];
+        const weaponKey = 'e';
+
 
         if (GameProperties.allowIdle && !GameProperties.usingIActionArray.includes(true)) {
             this.activeCharacter.moveset.reset(this);
         }
                
 
-        for (const key of moveKeys) {
+        for (const key of movementKeys) {
             if (GameProperties.inputKeys[key] && GameProperties.allowMovement){
                 if (key == 'a') { 
                     this.directionLeft = true;
