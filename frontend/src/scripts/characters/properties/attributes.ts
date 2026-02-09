@@ -4,7 +4,7 @@ type artifactStats = {
     hp?: number, hpPercentage?: number,
     atk? : number, atkPercentage?: number,
     def? : number, defPercentage?: number,
-    speed? : number, energyRecharge?: number, 
+    speed? : number, energyRecharge?: number,
     critDmg?: number, critRate?: number,
     lightning?: number, lightningPercentage?: number,
     fire?: number, firePercentage?: number,
@@ -17,14 +17,14 @@ type artifactStats = {
     wind?: number, windPercentage?: number
 };
 
-type artifact = [ 
+type artifact = [
     attribute1?: artifactStats, attribute2? : artifactStats,
-    attribute3? : artifactStats, attribute4? : artifactStats 
+    attribute3? : artifactStats, attribute4? : artifactStats
 ];
 
 type artifacts = [
     artifact, artifact?,
-    artifact?, artifact?, 
+    artifact?, artifact?,
     artifact?, artifact?
 ];
 
@@ -51,17 +51,17 @@ export class Attributes {
         this.def = this.defBuild;
         this.speed = this.speed;
         this.energyMax = this.energyMax;
-        this.dto = { 
+        this.dto = {
             characterEnergy: this.energyMax,
             characterMaxEnergy: this.energyMax,
-            energyCost: this.ultCost 
+            energyCost: this.ultCost
         };
-        
+
         this.energy = GameProperties.setInitialEnergy(this.dto);
     }
-    
+
     artifacts : artifacts = [[{hp : 322}, {atkPercentage : 40}], [{hp : 322}], [{hp : 322}, {hp : 322}, {hp : 322}, {hp : 322}]];
-    
+
     // private fields region
     private _hp = 0;
     private _atk = 0;
@@ -87,13 +87,13 @@ export class Attributes {
     }
     energy = 0;
     energyRecharge = 0;
-    exp = 0;
+    exp = 12000;
     hasWeapon = false;
     equipedWeapon = false;
     switchingWeapon = false;
-    
+
     // private setters
-    private set speed(value: number) { 
+    private set speed(value: number) {
         this._speed = value;
     }
 
@@ -124,9 +124,9 @@ export class Attributes {
     private set expMax(value: number) {
         this._expMax = value;
     }
-    
+
     // public getters
-    get speed(){ 
+    get speed(){
         if (this.id == 1)
             this.speed = 20;
         else if (this.id == 2)
@@ -136,7 +136,7 @@ export class Attributes {
         else if (this.id == 4)
             this.speed = 18;
 
-        return Number.parseInt(this._speed.toString(), 10); 
+        return Number.parseInt(this._speed.toString(), 10);
     }
 
     set atk(value: number){ this._atk = value }
@@ -144,7 +144,7 @@ export class Attributes {
 
     set hp(value: number){ this._hp = value }
     get hp(){ return Number.parseInt(this._hp.toString(), 10); }
-    
+
     set def(value: number){ this._def = value }
     get def(){ return Number.parseInt(this._def.toString(), 10); }
 
@@ -155,23 +155,23 @@ export class Attributes {
         if (this.id == 1){
             for (i; i < this.level; i++){
                 this._hpBase += (30 * (1 + (countDecimal / 1.25)));
-                if (justifyStats.includes(i)) 
-                    countDecimal++;  
+                if (justifyStats.includes(i))
+                    countDecimal++;
             }
         } else if (this.id == 2){
             for (i; i < this.level; i++){
                 this._hpBase += (32 * (1 + (countDecimal / 1.25)));
-                if (justifyStats.includes(i)) 
+                if (justifyStats.includes(i))
                     countDecimal++;
             }
         } else if (this.id == 3){
             for (i; i < this.level; i++){
                 this._hpBase += (38 * (1 + (countDecimal / 1.25)));
-                if (justifyStats.includes(i)) 
+                if (justifyStats.includes(i))
                     countDecimal++;
             }
         }
-        
+
         return Number.parseInt(this._hpBase.toString(), 10);
     }
 
@@ -181,20 +181,20 @@ export class Attributes {
         if (this.id == 1){
             for (let i = 0; i < this.level; i++){
                 this._atkBase += (9.2 * (1 + (countDecimal / 1.25)));
-                if (justifyStats.includes(i)) 
-                    countDecimal++;  
+                if (justifyStats.includes(i))
+                    countDecimal++;
             }
         } else if (this.id == 2){
             for (let i = 0; i < this.level; i++){
                 this._atkBase += (8.6 * (1 + (countDecimal / 1.15)));
-                if (justifyStats.includes(i)) 
+                if (justifyStats.includes(i))
                     countDecimal++;
             }
         }
         else if (this.id == 3){
             for (let i = 0; i < this.level; i++){
                 this._atkBase += (12.6 * (1 + (countDecimal / 1.15)));
-                if (justifyStats.includes(i)) 
+                if (justifyStats.includes(i))
                     countDecimal++;
             }
         }
@@ -208,35 +208,35 @@ export class Attributes {
         if (this.id == 1){
             for (let i = 0; i < this.level; i++){
                 this._defBase += (13.2 * (1 + (countDecimal / 1.25)));
-                if (justifyStats.includes(i)) 
-                    countDecimal++;  
+                if (justifyStats.includes(i))
+                    countDecimal++;
             }
         } else if (this.id == 2){
             for (let i = 0; i < this.level; i++){
                 this._defBase += (12.6 * (1 + (countDecimal / 1.25)));
-                if (justifyStats.includes(i)) 
+                if (justifyStats.includes(i))
                     countDecimal++;
             }
         }  else if (this.id == 3){
             for (let i = 0; i < this.level; i++){
                 this._defBase += (13.6 * (1 + (countDecimal / 1.25)));
-                if (justifyStats.includes(i)) 
+                if (justifyStats.includes(i))
                     countDecimal++;
             }
         }
 
         return Number.parseInt(this._defBase.toString(), 10);
     }
-    
+
     get hpBuild(){
-        let buildHpStats = 0; 
+        let buildHpStats = 0;
         for (let i = 0; i < this.artifacts.length; i++){
             const artifact = this.artifacts[i];
             if (!artifact){ continue; }
             for (let j = 0; j < artifact.length; j++){
                 if (artifact[j]?.hp != undefined){
                     buildHpStats += artifact[j]!.hp!;
-                    
+
                 } else if (artifact[j]?.hpPercentage != undefined){
                     buildHpStats += this.hpBase * artifact[j]?.hpPercentage!;
 
@@ -245,12 +245,12 @@ export class Attributes {
                 this._hpBuild = (buildHpStats + this.hpBase);
             }
         }
-        
+
         return Number.parseInt(this._hpBuild.toString(), 10);
     }
 
     get atkBuild(){
-        let buildAtkStats = 0; 
+        let buildAtkStats = 0;
         for (let i = 0; i < this.artifacts.length; i++){
             const artifact = this.artifacts[i];
             if (!artifact){ continue; }
@@ -260,9 +260,9 @@ export class Attributes {
 
                 } else if (artifact[j]?.atkPercentage != null){
                     buildAtkStats += this.atkBase * artifact[j]?.atkPercentage! / 100;
-                    
+
                 }
-                
+
                 this._atkBuild = buildAtkStats + this.atkBase;
             }
         }
@@ -271,14 +271,14 @@ export class Attributes {
     }
 
     get defBuild(){
-        let buildDefStats = 0; 
+        let buildDefStats = 0;
         for (let i = 0; i < this.artifacts.length; i++){
             const artifact = this.artifacts[i];
             if (!artifact){ continue; }
             for (let j = 0; j < artifact.length; j++){
                 if (artifact[j]?.def != undefined){
                     buildDefStats += artifact[j]?.def!;
-                    
+
                 } else if (artifact[j]?.defPercentage != undefined){
                     buildDefStats += this.defBase * artifact[j]?.defPercentage!;
 
@@ -289,14 +289,14 @@ export class Attributes {
         }
 
         return Number.parseInt(this._defBuild.toString(), 10);
-    } 
+    }
 
     get expMax(){
         let countDecimal = 0;
         this._expMax = 0;
         for (let i = 0; i < this.level; i++){
             this._expMax += (100 * (1 + (countDecimal / 1.25)));
-            if (justifyStats.includes(i)) 
+            if (justifyStats.includes(i))
                 countDecimal++;
 
         }
@@ -312,7 +312,7 @@ export class Attributes {
             this._energyMax = 160;
         else if (this.id == 2)
             this._energyMax = 40;
-        
+
         return Number.parseInt(this._energyMax.toString(), 10);
     }
 
